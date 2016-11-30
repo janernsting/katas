@@ -14,11 +14,15 @@ public class RomanNumeralsKata {
   @Test
   public void shouldConvertSimpleNumbers() {
     assertThat(arabicToRoman(1), is("I"));
-    assertThat(arabicToRoman(2), is("II"));
     assertThat(arabicToRoman(5), is("V"));
     assertThat(arabicToRoman(10), is("X"));
   }
   
+  @Test
+  public void shouldAddNumerals() {
+    assertThat(arabicToRoman(2), is("II"));
+  }
+
   private String arabicToRoman(Integer number) {
     StringBuilder result = new StringBuilder();
     Map<Integer, String> numberToNumeral = new HashMap<>();
