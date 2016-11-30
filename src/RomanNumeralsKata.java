@@ -17,7 +17,7 @@ public class RomanNumeralsKata {
     assertThat(arabicToRoman(5), is("V"));
     assertThat(arabicToRoman(10), is("X"));
   }
-  
+
   @Test
   public void shouldAddNumerals() {
     assertThat(arabicToRoman(2), is("II"));
@@ -28,15 +28,15 @@ public class RomanNumeralsKata {
     Map<Integer, String> numberToNumeral = new HashMap<>();
     numberToNumeral.put(5, "V");
     numberToNumeral.put(10, "X");
-    
+
     ArrayList<Integer> numbers = new ArrayList<>(numberToNumeral.keySet());
     Collections.sort(numbers);
     Collections.reverse(numbers);
-    
+
     for (Integer numberCategory : numbers) {
       for (; number > 0;) {
         if (number >= numberCategory) {
-          
+
         }
         if (numberToNumeral.containsKey(number)) {
           result.append(numberToNumeral.get(number));
