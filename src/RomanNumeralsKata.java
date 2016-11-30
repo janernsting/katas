@@ -13,7 +13,7 @@ public class RomanNumeralsKata {
     assertThat(arabicToRoman(5), is("V"));
   }
 
-  private String arabicToRoman(int number) {
+  private String arabicToRoman(Integer number) {
     StringBuilder result = new StringBuilder();
     for (; number > 0;) {
       if (number == 5) {
