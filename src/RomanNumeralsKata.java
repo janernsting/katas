@@ -38,19 +38,19 @@ public class RomanNumeralsKata {
     }
     return result.toString();
   }
-
-  private List<Integer> setupDescendingNumberCategories(Set<Integer> numberSet) {
-    List<Integer> numberCategories = new ArrayList<>(numberSet);
-    Collections.sort(numberCategories);
-    Collections.reverse(numberCategories);
-    return numberCategories;
-  }
-
+  
   private Map<Integer, String> setupLookup() {
     Map<Integer, String> numberToNumeral = new HashMap<>();
     numberToNumeral.put(1, "I");
     numberToNumeral.put(5, "V");
     numberToNumeral.put(10, "X");
     return numberToNumeral;
+  }
+
+  private List<Integer> setupDescendingNumberCategories(Set<Integer> numberSet) {
+    List<Integer> numberCategories = new ArrayList<>(numberSet);
+    Collections.sort(numberCategories);
+    Collections.reverse(numberCategories);
+    return numberCategories;
   }
 }
