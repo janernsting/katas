@@ -35,10 +35,7 @@ public class RomanNumeralsKata {
     Collections.reverse(numbers);
 
     for (Integer numberCategory : numbers) {
-      for (; number > 0;) {
-        if (number >= numberCategory) {
-
-        }
+      for (; number >= numberCategory;) {
         if (numberToNumeral.containsKey(number)) {
           result.append(numberToNumeral.get(number));
           number -= number;
