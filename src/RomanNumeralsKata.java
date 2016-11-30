@@ -26,6 +26,7 @@ public class RomanNumeralsKata {
   private String arabicToRoman(Integer number) {
     StringBuilder result = new StringBuilder();
     Map<Integer, String> numberToNumeral = new HashMap<>();
+    numberToNumeral.put(1, "I");
     numberToNumeral.put(5, "V");
     numberToNumeral.put(10, "X");
 
