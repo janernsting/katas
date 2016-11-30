@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -24,22 +26,31 @@ public class RomanNumeralsKata {
   }
 
   private String arabicToRoman(Integer number) {
+    Map<Integer, String> numberToNumeral = setupLookup();
+    List<Integer> numberCategories = setupDescendingNumberCategories(numberToNumeral.keySet());
+
     StringBuilder result = new StringBuilder();
-    Map<Integer, String> numberToNumeral = new HashMap<>();
-    numberToNumeral.put(1, "I");
-    numberToNumeral.put(5, "V");
-    numberToNumeral.put(10, "X");
-
-    ArrayList<Integer> numbers = new ArrayList<>(numberToNumeral.keySet());
-    Collections.sort(numbers);
-    Collections.reverse(numbers);
-
-    for (Integer numberCategory : numbers) {
+    for (Integer numberCategory : numberCategories) {
       for (; number >= numberCategory;) {
         result.append(numberToNumeral.get(numberCategory));
         number -= numberCategory;
       }
     }
     return result.toString();
+  }
+
+  private List<Integer> setupDescendingNumberCategories(Set<Integer> numberSet) {
+    List<Integer> numberCategories = new ArrayList<>(numberSet);
+    Collections.sort(numberCategories);
+    Collections.reverse(numberCategories);
+    return numberCategories;
+  }
+
+  private Map<Integer, String> setupLookup() {
+    Map<Integer, String> numberToNumeral = new HashMap<>();
+    numberToNumeral.put(1, "I");
+    numberToNumeral.put(5, "V");
+    numberToNumeral.put(10, "X");
+    return numberToNumeral;
   }
 }
