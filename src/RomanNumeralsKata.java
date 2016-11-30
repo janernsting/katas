@@ -20,7 +20,7 @@ public class RomanNumeralsKata {
 
   @Test
   public void shouldAddNumerals() {
-    assertThat(arabicToRoman(2), is("II"));
+    assertThat(arabicToRoman(23), is("XXIII"));
   }
 
   private String arabicToRoman(Integer number) {
