@@ -36,13 +36,8 @@ public class RomanNumeralsKata {
 
     for (Integer numberCategory : numbers) {
       for (; number >= numberCategory;) {
-        if (numberToNumeral.containsKey(number)) {
-          result.append(numberToNumeral.get(number));
-          number -= number;
-        } else {
-          result.append("I");
-          number -= 1;
-        }
+        result.append(numberToNumeral.get(numberCategory));
+        number -= numberCategory;
       }
     }
     return result.toString();
