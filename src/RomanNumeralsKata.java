@@ -29,6 +29,7 @@ public class RomanNumeralsKata {
   public void shouldHandleSubtractiveRomanNumerals() {
     assertThat(arabicToRoman(4), is("IV"));
     assertThat(arabicToRoman(9), is("IX"));
+    assertThat(arabicToRoman(40), is("XL"));
   }
 
   private String arabicToRoman(Integer number) {
@@ -43,6 +44,9 @@ public class RomanNumeralsKata {
       } else if (number == 10 - 1) {
         result.append("I");
         number -= -1;
+      } else if (number == 50 - 10) {
+        result.append("X");
+        number -= -10;
       }
       while (number >= numberCategory) {
         result.append(numberToNumeral.get(numberCategory));
@@ -57,6 +61,7 @@ public class RomanNumeralsKata {
     numberToNumeral.put(1, "I");
     numberToNumeral.put(5, "V");
     numberToNumeral.put(10, "X");
+    numberToNumeral.put(50, "L");
     return numberToNumeral;
   }
 
