@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.is;
 
 import static org.junit.Assert.*;
 
-
 public class RomanNumeralsKata {
 
   @Test
@@ -14,9 +13,11 @@ public class RomanNumeralsKata {
   }
 
   private String arabicToRoman(int number) {
-    if (number == 2) {
-      return "I" + "I";
+    StringBuilder result = new StringBuilder();
+    for (; number > 0;) {
+      result.append("I");
+      number -= 1;
     }
-    return "I";
+    return result.toString();
   }
 }
