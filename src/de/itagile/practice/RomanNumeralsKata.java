@@ -1,3 +1,4 @@
+package de.itagile.practice;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
