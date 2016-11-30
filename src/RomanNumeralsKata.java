@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,14 +24,23 @@ public class RomanNumeralsKata {
     Map<Integer, String> numberToNumeral = new HashMap<>();
     numberToNumeral.put(5, "V");
     numberToNumeral.put(10, "X");
-
-    for (; number > 0;) {
-      if (numberToNumeral.containsKey(number)) {
-        result.append(numberToNumeral.get(number));
-        number -= number;
-      } else {
-        result.append("I");
-        number -= 1;
+    
+    ArrayList<Integer> numbers = new ArrayList<>(numberToNumeral.keySet());
+    Collections.sort(numbers);
+    Collections.reverse(numbers);
+    
+    for (Integer numberCategory : numbers) {
+      for (; number > 0;) {
+        if (number >= numberCategory) {
+          
+        }
+        if (numberToNumeral.containsKey(number)) {
+          result.append(numberToNumeral.get(number));
+          number -= number;
+        } else {
+          result.append("I");
+          number -= 1;
+        }
       }
     }
     return result.toString();
