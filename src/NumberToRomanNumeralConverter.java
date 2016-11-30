@@ -38,19 +38,19 @@ public class NumberToRomanNumeralConverter {
   }
 
   public String arabicToRoman(Integer number) {
-    StringBuilder result = new StringBuilder();
+    String result = "";
     for (Integer numberCategory : numberCategories) {
       if (requiresSubtraction(number, numberCategory)) {
         Integer differenceToHigherNumberCategory = subtractivePairs.get(numberCategory);
-        result.append(numberToNumeral.get(differenceToHigherNumberCategory));
+        result += numberToNumeral.get(differenceToHigherNumberCategory);
         number += differenceToHigherNumberCategory;
       }
       while (number >= numberCategory) {
-        result.append(numberToNumeral.get(numberCategory));
+        result += numberToNumeral.get(numberCategory);
         number -= numberCategory;
       }
     }
-    return result.toString();
+    return result;
   }
 
   private boolean requiresSubtraction(Integer number, Integer numberCategory) {
