@@ -21,7 +21,7 @@ public class NumberToRomanNumeralConverter {
   public String arabicToRoman(Integer number) {
     StringBuilder result = new StringBuilder();
     for (Integer numberCategory : numberCategories) {
-      if (subtractivePairs.containsKey(numberCategory)) {
+      if (mayRequireSubtraction(numberCategory)) {
         Integer subtractor = subtractivePairs.get(numberCategory);
         if (number == numberCategory - subtractor) {
           result.append(numberToNumeral.get(subtractor));
@@ -34,6 +34,10 @@ public class NumberToRomanNumeralConverter {
       }
     }
     return result.toString();
+  }
+
+  private boolean mayRequireSubtraction(Integer numberCategory) {
+    return subtractivePairs.containsKey(numberCategory);
   }
 
   private void setupLookup() {
