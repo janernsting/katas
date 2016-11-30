@@ -37,21 +37,16 @@ public class RomanNumeralsKata {
 
     StringBuilder result = new StringBuilder();
     for (Integer numberCategory : numberCategories) {
+      if (number == 5 - 1) {
+        result.append("I");
+        number -= -1;
+      } else if (number == 10 - 1) {
+        result.append("I");
+        number -= -1;
+      }
       while (number >= numberCategory) {
-        if (number == 5 - 1) {
-          result.append("I");
-          number -= -1;
-          result.append("V");
-          number -= 5;
-        } else if (number == 10 - 1) {
-          result.append("I");
-          number -= -1;
-          result.append("X");
-          number -= 10;
-        } else {
-          result.append(numberToNumeral.get(numberCategory));
-          number -= numberCategory;
-        }
+        result.append(numberToNumeral.get(numberCategory));
+        number -= numberCategory;
       }
     }
     return result.toString();
