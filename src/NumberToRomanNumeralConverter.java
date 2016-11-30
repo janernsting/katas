@@ -17,6 +17,25 @@ public class NumberToRomanNumeralConverter {
     setupDescendingNumberCategories(numberToNumeral.keySet());
     setupSubtractivePairs();
   }
+  
+  private void setupLookup() {
+    numberToNumeral.put(1, "I");
+    numberToNumeral.put(5, "V");
+    numberToNumeral.put(10, "X");
+    numberToNumeral.put(50, "L");
+  }
+  
+  private void setupDescendingNumberCategories(Set<Integer> numberSet) {
+    numberCategories.addAll(numberSet);
+    Collections.sort(numberCategories);
+    Collections.reverse(numberCategories);
+  }
+  
+  private void setupSubtractivePairs() {
+    subtractivePairs.put(5, 1);
+    subtractivePairs.put(10, 1);
+    subtractivePairs.put(50, 10);
+  }
 
   public String arabicToRoman(Integer number) {
     StringBuilder result = new StringBuilder();
@@ -38,25 +57,6 @@ public class NumberToRomanNumeralConverter {
 
   private boolean mayRequireSubtraction(Integer numberCategory) {
     return subtractivePairs.containsKey(numberCategory);
-  }
-
-  private void setupLookup() {
-    numberToNumeral.put(1, "I");
-    numberToNumeral.put(5, "V");
-    numberToNumeral.put(10, "X");
-    numberToNumeral.put(50, "L");
-  }
-
-  private void setupDescendingNumberCategories(Set<Integer> numberSet) {
-    numberCategories.addAll(numberSet);
-    Collections.sort(numberCategories);
-    Collections.reverse(numberCategories);
-  }
-
-  private void setupSubtractivePairs() {
-    subtractivePairs.put(5, 1);
-    subtractivePairs.put(10, 1);
-    subtractivePairs.put(50, 10);
   }
 
 }
