@@ -9,10 +9,8 @@ public class RomanNumeralsKata {
   NumberToRomanNumeralConverter converter = new NumberToRomanNumeralConverter();
   
   @Test
-  public void shouldConvertSimpleNumbers() {
+  public void shouldHandleSimpleNumerals() {
     assertThat(theRomanNumeralOf(1), is("I"));
-    assertThat(theRomanNumeralOf(5), is("V"));
-    assertThat(theRomanNumeralOf(10), is("X"));
   }
   
   private String theRomanNumeralOf(int number) {
@@ -20,19 +18,17 @@ public class RomanNumeralsKata {
   }
 
   @Test
-  public void shouldAddNumerals() {
+  public void shouldHandleAdditiveNumerals() {
     assertThat(theRomanNumeralOf(23), is("XXIII"));
   }
   
   @Test
-  public void shouldHandleSubtractiveRomanNumerals() {
+  public void shouldHandleSubtractiveNumerals() {
     assertThat(theRomanNumeralOf(4), is("IV"));
-    assertThat(theRomanNumeralOf(9), is("IX"));
-    assertThat(theRomanNumeralOf(40), is("XL"));
   }
   
   @Test
-  public void shouldHandleCombinationsOfSubtractiveRomanNumerals() {
+  public void shouldHandleCombinationsOfSubtractiveNumerals() {
     assertThat(theRomanNumeralOf(44), is("XLIV"));
   }
 }
