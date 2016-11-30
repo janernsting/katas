@@ -14,12 +14,14 @@ public class RomanNumeralsKata {
     assertThat(arabicToRoman(1), is("I"));
     assertThat(arabicToRoman(2), is("II"));
     assertThat(arabicToRoman(5), is("V"));
+    assertThat(arabicToRoman(10), is("X"));
   }
-
+  
   private String arabicToRoman(Integer number) {
     StringBuilder result = new StringBuilder();
     Map<Integer, String> numberToNumeral = new HashMap<>();
     numberToNumeral.put(5, "V");
+    numberToNumeral.put(10, "X");
 
     for (; number > 0;) {
       if (numberToNumeral.containsKey(number)) {
