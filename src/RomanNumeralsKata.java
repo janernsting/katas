@@ -40,15 +40,15 @@ public class RomanNumeralsKata {
     for (Integer numberCategory : numberCategories) {
       if (number == 5 - 1) {
         result.append("I");
-        number -= -1;
+        number += 1;
       }
       if (number == 10 - 1) {
         result.append("I");
-        number -= -1;
+        number += 1;
       } 
       if (number == 50 - 10) {
         result.append("X");
-        number -= -10;
+        number += 10;
       }
       while (number >= numberCategory) {
         result.append(numberToNumeral.get(numberCategory));
