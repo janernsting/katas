@@ -35,20 +35,16 @@ public class RomanNumeralsKata {
   private String arabicToRoman(Integer number) {
     Map<Integer, String> numberToNumeral = setupLookup();
     List<Integer> numberCategories = setupDescendingNumberCategories(numberToNumeral.keySet());
-
+    Map<Integer, Integer> subtractivePairs = subtractivePairs();
+    
     StringBuilder result = new StringBuilder();
     for (Integer numberCategory : numberCategories) {
-      if (number == 5 - 1) {
-        result.append("I");
-        number += 1;
-      }
-      if (number == 10 - 1) {
-        result.append("I");
-        number += 1;
-      } 
-      if (number == 50 - 10) {
-        result.append("X");
-        number += 10;
+      if (subtractivePairs.containsKey(numberCategory)) {
+        Integer subtractor = subtractivePairs.get(numberCategory);
+        if (number == numberCategory - subtractor) {
+          result.append(numberToNumeral.get(subtractor));
+          number += subtractor;
+        }
       }
       while (number >= numberCategory) {
         result.append(numberToNumeral.get(numberCategory));
@@ -57,7 +53,7 @@ public class RomanNumeralsKata {
     }
     return result.toString();
   }
-  
+
   private Map<Integer, String> setupLookup() {
     Map<Integer, String> numberToNumeral = new HashMap<>();
     numberToNumeral.put(1, "I");
@@ -72,5 +68,13 @@ public class RomanNumeralsKata {
     Collections.sort(numberCategories);
     Collections.reverse(numberCategories);
     return numberCategories;
+  }
+  
+  private Map<Integer, Integer> subtractivePairs() {
+    HashMap<Integer, Integer> pairs = new HashMap<>();
+    pairs.put(5, 1);
+    pairs.put(10, 1);
+    pairs.put(50, 10);
+    return pairs;
   }
 }
