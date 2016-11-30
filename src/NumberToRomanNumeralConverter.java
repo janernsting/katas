@@ -40,12 +40,10 @@ public class NumberToRomanNumeralConverter {
   public String arabicToRoman(Integer number) {
     StringBuilder result = new StringBuilder();
     for (Integer numberCategory : numberCategories) {
-      if (mayRequireSubtraction(numberCategory)) {
+      if (requiresSubtraction(number, numberCategory)) {
         Integer subtractor = subtractivePairs.get(numberCategory);
-        if (number / subtractor * subtractor + subtractor == numberCategory) {
-          result.append(numberToNumeral.get(subtractor));
-          number += subtractor;
-        }
+        result.append(numberToNumeral.get(subtractor));
+        number += subtractor;
       }
       while (number >= numberCategory) {
         result.append(numberToNumeral.get(numberCategory));
@@ -55,8 +53,16 @@ public class NumberToRomanNumeralConverter {
     return result.toString();
   }
 
-  private boolean mayRequireSubtraction(Integer numberCategory) {
-    return subtractivePairs.containsKey(numberCategory);
+  private boolean requiresSubtraction(Integer number, Integer numberCategory) {
+    if (noSubtractionPairExists(numberCategory)) {
+      return false;
+    }
+    Integer subtractor = subtractivePairs.get(numberCategory);
+    return (number / subtractor + 1) * subtractor == numberCategory;
+  }
+
+  private boolean noSubtractionPairExists(Integer numberCategory) {
+    return !subtractivePairs.containsKey(numberCategory);
   }
 
 }
