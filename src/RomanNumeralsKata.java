@@ -10,20 +10,24 @@ public class RomanNumeralsKata {
   
   @Test
   public void shouldConvertSimpleNumbers() {
-    assertThat(converter.arabicToRoman(1), is("I"));
-    assertThat(converter.arabicToRoman(5), is("V"));
-    assertThat(converter.arabicToRoman(10), is("X"));
+    assertThat(theRomanNumeralOf(1), is("I"));
+    assertThat(theRomanNumeralOf(5), is("V"));
+    assertThat(theRomanNumeralOf(10), is("X"));
+  }
+  
+  private String theRomanNumeralOf(int number) {
+    return converter.arabicToRoman(number);
   }
 
   @Test
   public void shouldAddNumerals() {
-    assertThat(converter.arabicToRoman(23), is("XXIII"));
+    assertThat(theRomanNumeralOf(23), is("XXIII"));
   }
   
   @Test
   public void shouldHandleSubtractiveRomanNumerals() {
-    assertThat(converter.arabicToRoman(4), is("IV"));
-    assertThat(converter.arabicToRoman(9), is("IX"));
-    assertThat(converter.arabicToRoman(40), is("XL"));
+    assertThat(theRomanNumeralOf(4), is("IV"));
+    assertThat(theRomanNumeralOf(9), is("IX"));
+    assertThat(theRomanNumeralOf(40), is("XL"));
   }
 }
