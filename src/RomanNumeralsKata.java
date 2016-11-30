@@ -10,9 +10,13 @@ public class RomanNumeralsKata {
   public void shouldConvertSimpleNumbers() {
     assertThat(arabicToRoman(1), is("I"));
     assertThat(arabicToRoman(2), is("II"));
+    assertThat(arabicToRoman(5), is("V"));
   }
 
   private String arabicToRoman(int number) {
+    if (number == 5) {
+      return "V";
+    }
     StringBuilder result = new StringBuilder();
     for (; number > 0;) {
       result.append("I");
