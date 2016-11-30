@@ -24,6 +24,12 @@ public class RomanNumeralsKata {
   public void shouldAddNumerals() {
     assertThat(arabicToRoman(23), is("XXIII"));
   }
+  
+  @Test
+  public void shouldHandleSubtractiveRomanNumerals() {
+    assertThat(arabicToRoman(4), is("IV"));
+    assertThat(arabicToRoman(9), is("IX"));
+  }
 
   private String arabicToRoman(Integer number) {
     Map<Integer, String> numberToNumeral = setupLookup();
@@ -32,8 +38,18 @@ public class RomanNumeralsKata {
     StringBuilder result = new StringBuilder();
     for (Integer numberCategory : numberCategories) {
       while (number >= numberCategory) {
-        result.append(numberToNumeral.get(numberCategory));
-        number -= numberCategory;
+        if (number == 5 - 1) {
+          result.append("I");
+          result.append("V");
+          number -= 5 - 1;
+        } else if (number == 10 - 1) {
+          result.append("I");
+          result.append("X");
+          number -= 10 - 1;
+        } else {
+          result.append(numberToNumeral.get(numberCategory));
+          number -= numberCategory;
+        }
       }
     }
     return result.toString();
