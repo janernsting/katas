@@ -30,4 +30,9 @@ public class RomanNumeralsKata {
     assertThat(theRomanNumeralOf(9), is("IX"));
     assertThat(theRomanNumeralOf(40), is("XL"));
   }
+  
+  @Test
+  public void shouldHandleCombinationsOfSubtractiveRomanNumerals() {
+    assertThat(theRomanNumeralOf(44), is("XLIV"));
+  }
 }

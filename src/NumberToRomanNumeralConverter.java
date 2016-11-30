@@ -42,7 +42,7 @@ public class NumberToRomanNumeralConverter {
     for (Integer numberCategory : numberCategories) {
       if (mayRequireSubtraction(numberCategory)) {
         Integer subtractor = subtractivePairs.get(numberCategory);
-        if (number == numberCategory - subtractor) {
+        if (number / subtractor * subtractor + subtractor == numberCategory) {
           result.append(numberToNumeral.get(subtractor));
           number += subtractor;
         }
