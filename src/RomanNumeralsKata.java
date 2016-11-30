@@ -41,10 +41,12 @@ public class RomanNumeralsKata {
       if (number == 5 - 1) {
         result.append("I");
         number -= -1;
-      } else if (number == 10 - 1) {
+      }
+      if (number == 10 - 1) {
         result.append("I");
         number -= -1;
-      } else if (number == 50 - 10) {
+      } 
+      if (number == 50 - 10) {
         result.append("X");
         number -= -10;
       }
