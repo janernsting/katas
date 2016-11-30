@@ -41,9 +41,9 @@ public class NumberToRomanNumeralConverter {
     StringBuilder result = new StringBuilder();
     for (Integer numberCategory : numberCategories) {
       if (requiresSubtraction(number, numberCategory)) {
-        Integer subtractor = subtractivePairs.get(numberCategory);
-        result.append(numberToNumeral.get(subtractor));
-        number += subtractor;
+        Integer differenceToHigherNumberCategory = subtractivePairs.get(numberCategory);
+        result.append(numberToNumeral.get(differenceToHigherNumberCategory));
+        number += differenceToHigherNumberCategory;
       }
       while (number >= numberCategory) {
         result.append(numberToNumeral.get(numberCategory));
