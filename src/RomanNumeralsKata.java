@@ -14,13 +14,15 @@ public class RomanNumeralsKata {
   }
 
   private String arabicToRoman(int number) {
-    if (number == 5) {
-      return "V";
-    }
     StringBuilder result = new StringBuilder();
     for (; number > 0;) {
-      result.append("I");
-      number -= 1;
+      if (number == 5) {
+        result.append("V");
+        number -= 5;
+      } else {
+        result.append("I");
+        number -= 1;
+      }
     }
     return result.toString();
   }
