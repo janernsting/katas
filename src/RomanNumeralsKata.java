@@ -31,7 +31,7 @@ public class RomanNumeralsKata {
 
     StringBuilder result = new StringBuilder();
     for (Integer numberCategory : numberCategories) {
-      for (; number >= numberCategory;) {
+      while (number >= numberCategory) {
         result.append(numberToNumeral.get(numberCategory));
         number -= numberCategory;
       }
